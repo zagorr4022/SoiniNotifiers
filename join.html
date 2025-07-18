@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const jobId = urlParams.get("jobId");
+    const placeId = urlParams.get("placeId") || "15502339000";
+
+    if (jobId) {
+      const target = `https://www.roblox.com/games/start?placeId=${placeId}&gameInstanceId=${jobId}`;
+      window.location.href = target;
+    } else {
+      document.write("Erro: jobId não fornecido.");
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
