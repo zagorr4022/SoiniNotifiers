@@ -1,21 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting...</title>
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const jobId = urlParams.get("jobId");
-    const placeId = urlParams.get("placeId") || "15502339000";
-
-    if (jobId) {
-      const target = `https://www.roblox.com/games/start?placeId=${placeId}&gameInstanceId=${jobId}`;
-      window.location.href = target;
-    } else {
-      document.write("Erro: jobId não fornecido.");
+  <title>Soini Notify - Join</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 60px;
+      background-color: #f7f7f7;
     }
-  </script>
+    h2 {
+      color: #333;
+    }
+    #btn {
+      display: none;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #btn:hover {
+      background-color: #2563eb;
+    }
+  </style>
 </head>
 <body>
+  <h2>Redirecionando para o Roblox...</h2>
+  <button id="btn">Não foi redirecionado? (Abrir pelo Roblox)</button>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const jobId = params.get("jobid");
+
+    if (jobId) {
+      const redirectUrl = "https://www.roblox.com/games/14732615251/Steal-a-Brainrot?jobId=" + jobId;
+      
+      // Redirecionamento automático
+      setTimeout(() => {
+        window.location.href = redirectUrl;
+      }, 500);
+
+      // Botão de fallback
+      setTimeout(() => {
+        document.getElementById("btn").style.display = "inline-block";
+        document.getElementById("btn").onclick = () => {
+          window.location.href = redirectUrl;
+        };
+      }, 2000);
+    } else {
+      document.body.innerHTML = "<h2>⚠️ Nenhum Job ID fornecido na URL!</h2>";
+    }
+  </script>
 </body>
 </html>
